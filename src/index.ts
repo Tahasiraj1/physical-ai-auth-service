@@ -20,13 +20,16 @@ const port = process.env.PORT || 3000;
 // CORS configuration
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || 'http://localhost:3001',
+    origin: [
+      process.env.FRONTEND_URL || 'http://localhost:3001',
+      'https://tahasiraj1.github.io', // Your GitHub Pages URL
+      'https://tahasiraj1.github.io/Physical-AI-Humanoid-Robotics-Textbook', // Full path
+    ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Cookie'],
   })
 );
-
 // Body parsing middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
