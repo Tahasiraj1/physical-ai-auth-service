@@ -17,7 +17,7 @@ export async function requireAuth(
     });
 
     // Better Auth returns { data: { user, session }, error: null }
-    const user = session?.data?.user || session?.user;
+    const user = session?.user
 
     if (!session || !user) {
       res.status(401).json({ error: 'Unauthorized', message: 'Authentication required' });
@@ -48,7 +48,7 @@ export async function optionalAuth(
     });
 
     // Better Auth returns { data: { user, session }, error: null }
-    const user = session?.data?.user || session?.user;
+    const user = session?.user;
 
     if (session && user) {
       (req as any).user = user;
